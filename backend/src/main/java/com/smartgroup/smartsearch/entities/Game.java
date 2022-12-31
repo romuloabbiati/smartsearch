@@ -7,16 +7,32 @@ import java.util.Objects;
 
 import com.smartgroup.smartsearch.entities.enums.Platform;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_game")
 public class Game implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Platform platform;
 	
+	@ManyToOne
+	@JoinColumn(name = "genre_id")
 	private Genre genre;
 	
+	@OneToMany(mappedBy = "game")
 	private List<Record> records = new ArrayList<>();
 	
 	public Game() {}
