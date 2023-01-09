@@ -13,7 +13,6 @@ const Home = () => (
             <h3 className="home-text-subtitle">
                 Click the button below and find out which games are the players choosing?
             </h3>
-            
             <Link to="/records">
                 <div className="home-actions">
                     <button className="home-btn">
