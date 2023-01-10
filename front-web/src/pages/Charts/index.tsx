@@ -1,21 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Filters from '../../components/Filters';
 import './styles.css';
-import { barOptions } from './chart-options';
+import { barOptions, pieOptions } from './chart-options';
 import Chart from 'react-apexcharts';
 
-const chartData = [
-    {
-        x: 'Romulo',
-        y: 10
-    },
-    {
-        x: 'Isabela',
-        y: 20
-    }
-]
+type PieChartData = {
+    labels: string[];
+    series: number[];
+}
+
+type BarChartData = {
+    x: string;
+    y: number;
+}
+
+const initialPieData = {
+    labels: [],
+    series: []
+}
 
 const Charts = () => {
+    const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
+    const [platformData, setPlatformData] = useState<PieChartData>(initialPieData);
+    const [genreData, setGenreData] = useState<PieChartData>(initialPieData);
+    
     return (
         <div className="page-container">
             <Filters link="/records" linkText="SEE TABLE" />
@@ -29,18 +37,29 @@ const Charts = () => {
                             options={barOptions}
                             type="bar"
                             width="900"
-                            height="150"
-                            series={[{ data: chartData }]}
+                            height="650"
+                            series={[{ data: barChartData }]}
                         />
                     </div>
                 </div>
                 <div className="charts">
                     <div className="platform-chart">
                         <h2 className="chart-title">Platforms</h2>
-                        
+                        <Chart 
+                            options={{ ...pieOptions, labels: platformData?.labels}}
+                            type="donut"
+                            series={platformData?.series}
+                            width="350"
+                        />
                     </div>
                     <div className="genre-chart">
                         <h2 className="chart-title">Genres</h2>
+                        <Chart 
+                            options={{ ...pieOptions, labels: genreData?.labels}}
+                            type="donut"
+                            series={genreData?.series}
+                            width="350"
+                        />
                     </div>
                 </div>
             </div>
