@@ -38,8 +38,8 @@ export const getPlatformChartData = (records: RecordItem[]) => {
   };
 };
 
-export const getGenderChartData = (records: RecordItem[]) => {
-   const genderByAmount = records.reduce((accumulator, currentValue) => {
+export const getGenreChartData = (records: RecordItem[]) => {
+   const genreByAmount = records.reduce((accumulator, currentValue) => {
      if (accumulator[currentValue.genreName] !== undefined) {
        accumulator[currentValue.genreName] += 1;
      } else {
@@ -49,8 +49,8 @@ export const getGenderChartData = (records: RecordItem[]) => {
      return accumulator;
    }, {} as Record<string, number>);
 
-   const labels = Object.keys(genderByAmount);
-   const series = Object.values(genderByAmount);
+   const labels = Object.keys(genreByAmount);
+   const series = Object.values(genreByAmount);
 
   return {
     labels,
