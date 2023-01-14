@@ -4,7 +4,7 @@ import './styles.css';
 import { barOptions, pieOptions } from './chart-options';
 import Chart from 'react-apexcharts';
 import axios from 'axios';
-import { buildBarSeries, getGenreChartData, getPlatformChartData } from './helpers';
+import { buildBarSeries, getPlatformChartData, getGenreChartData } from './helpers';
 
 type PieChartData = {
     labels: string[];
@@ -21,7 +21,7 @@ const initialPieData = {
     series: []
 }
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'https://smartsearch-abbiati.herokuapp.com'
 
 const Charts = () => {
     const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
@@ -35,6 +35,7 @@ const Charts = () => {
             
             const barData = buildBarSeries(gamesResponse.data, recordsResponse.data.content);
             setBarChartData(barData);
+            console.log(barData);
 
             const platformChartData = getPlatformChartData(recordsResponse.data.content);
             setPlatformData(platformChartData);

@@ -5,3 +5,8 @@ export type Game = {
     title: string;
     platform: Platform;
 }
+
+export type ChartItem = {
+    x: string;
+    y: number;
+}
