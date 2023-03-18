@@ -35,12 +35,12 @@
   </ul>
 </div>
 
-<h2>Implantação em produção</h2>
+<h2>Deploy in Production</h2>
 <div>
   <ul>
     <li>Back end: Heroku</li>
     <li>Front end web: Netlify</li>
-    <li>Banco de dados: Postgresql</li>
+    <li>DB: Postgresql</li>
     <li>Note: app removed from Heroku due to costs</li>
   </ul>
 </div>
